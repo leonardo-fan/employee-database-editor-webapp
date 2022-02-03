@@ -5,8 +5,9 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true
 });
 
-let _db;
+var _db;
 
+// methods that can be used by other files that require(conn)
 module.exports = {
     connectToServer: callback => {
         client.connect((err, db) => {
@@ -18,14 +19,8 @@ module.exports = {
             return callback(err);
         });
     },
-    
+
     getDb: () => {
         return _db;
     }
 };
-
-// client.connect(err => {
-//     const collection = client.db("test").collection("devices");
-//     // perform actions on the collection object
-//     client.close();
-// });
