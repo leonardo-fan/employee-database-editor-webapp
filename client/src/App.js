@@ -9,13 +9,15 @@ import Create from "./components/create";
 export default function App () {
     // exact path means the url has to be an exact match to switch to the specified root - routes are default chosen with partial matches down the list
     return (
-        <div>
+        <div>   
             <Navbar />
-            <Routes>
-                <Route exact path="/" element={<RecordList />} />
-                <Route path="/edit/:id" element={<Edit />} />
-                <Route path="/create" element={<Create />} />
-            </Routes>
+            <div className="container-fluid" style={ { backgroundColor: "#000000", height: "100vh" } }>
+                <Routes>
+                    <Route exact path="/" element={<RecordList />} />
+                    <Route path="/edit/:id" element={<Edit />} />
+                    <Route path="/create" element={<Create />} />
+                </Routes>
+            </div>
         </div>
     );
 };
