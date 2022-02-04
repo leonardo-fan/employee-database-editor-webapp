@@ -1,6 +1,8 @@
-# mern
+# Employee Database GUI
 
-Tutorial to create similar web app here: https://www.mongodb.com/languages/mern-stack-tutorial
+This is a project done to learn backend and frontend technologies and frameworks through the MERN stack (MongoDB, ExpressJS, NodeJS, ReactJS + Bootstrap). 
+
+Tutorial to create similar web app can be found here: https://www.mongodb.com/languages/mern-stack-tutorial
 
 **Server Dependencies**
 * mongodb: drivers to allow NodeJS app to connect to db
@@ -15,12 +17,16 @@ Tutorial to create similar web app here: https://www.mongodb.com/languages/mern-
 
 **Client Dependencies**
 * bootstrap: preset templates/components for web apps
-* react-router-dom: React router components for web apps
+* react-router-dom: React router components for web apps -> allows for changes in views without refreshing the whole page
 
 *Client notes*
 * async functions
 * cannot change state of unmounted components
-* fetch using http requests - method, headers, body
+* fetch (returns promise that must be resolved to a Response object of the HTTP response then to json via .json())
+    * additional request options through init object arg with method, headers, body
 * useParams and useNavigate from react router dom
 * routes to switch between components to view
-* dark mode :)
+* learnt some bootstrap functionalities
+
+**TODO**
+* publish to web
