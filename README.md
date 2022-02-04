@@ -16,3 +16,13 @@ Tutorial to create similar web app here: https://www.mongodb.com/languages/mern-
 **Client Dependencies**
 * bootstrap: preset templates/components for web apps
 * react-router-dom: React router components for web apps
+
+*Client notes*
+* async functions
+* fetch using http requests - method, headers, body
+* useParams and useNavigate from react router dom
+* routes to switch between components to view
+
+**todo**
+* records in edit.js
+* collapsable navbar
