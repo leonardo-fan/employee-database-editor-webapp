@@ -42,7 +42,8 @@ export default function Create() {
     };
 
     return (
-        <div>
+        <div className="text-light">
+            <br></br>
             <h3>Create New Record</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -56,7 +57,7 @@ export default function Create() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="position">Position</label>
+                    <label htmlFor="position">Role</label>
                     <input
                         type="text"
                         className="form-control"

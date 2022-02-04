@@ -6,8 +6,7 @@ export default function Edit() {
     const [form, setForm] = useState({
         name: "",
         position: "",
-        level: "",
-        // records: [] 
+        level: "" 
     });
     const params = useParams(); // defined in routes in App.js, params.id comes from :id 
     const navigate = useNavigate(); // used to nav between pages
@@ -61,11 +60,12 @@ export default function Edit() {
     };
 
     return (
-        <div>
+        <div className="text-light">
+            <br></br>
             <h3>Update Record</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name: </label>
+                    <label htmlFor="name">Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -75,7 +75,7 @@ export default function Edit() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="position">Position: </label>
+                    <label htmlFor="position">Role</label>
                     <input
                         type="text"
                         className="form-control"
