@@ -19,10 +19,8 @@ Tutorial to create similar web app here: https://www.mongodb.com/languages/mern-
 
 *Client notes*
 * async functions
+* cannot change state of unmounted components
 * fetch using http requests - method, headers, body
 * useParams and useNavigate from react router dom
 * routes to switch between components to view
-
-**todo**
-* records in edit.js
-* collapsable navbar
+* dark mode :)
