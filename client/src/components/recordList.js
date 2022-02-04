@@ -42,7 +42,7 @@ export default function RecordList() {
     }, [records.length]); // test if edited will refresh
 
     // delete record
-    const deleteRecord = id => {
+    const deleteRecord = async id => {
         await fetch(`http://localhost:5000/${id}`, {
             method: "DELETE"
         });
