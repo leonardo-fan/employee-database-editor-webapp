@@ -31,14 +31,15 @@ recordRoutes.route("/record/:id").get((request, response) => {
 recordRoutes.route("/record/add").post((request, response) => {
     let db_connect = dbo.getDb("employees");
     let myObj = {
-        person_name: request.body.person_name,
-        person_position: request.body.person_position,
-        person_level: request.body.person_level
+        name: request.body.name,
+        position: request.body.position,
+        level: request.body.level
     };
     db_connect
         .collection("records")
         .insertOne(myObj, (err, result) => {
             if (err) throw err;
+            console.log("1 document added");
             response.json(result);
         });
 });
@@ -49,9 +50,9 @@ recordRoutes.route("/update/:id").post((request, response) => {
     let myQuery = { _id: ObjectId( request.params.id ) };
     let newValues = {
         $set: {
-            person_name: request.body.person_name,
-            person_position: request.body.person_position,
-            person_level: request.body.person_level
+            name: request.body.name,
+            position: request.body.position,
+            level: request.body.level
         }
     };
     db_connect
