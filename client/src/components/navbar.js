@@ -9,8 +9,8 @@ export default function Navbar () {
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+        <div className="sticky-top">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <NavLink className="navbar-brand mx-3 my-1 h1" to="/">🏢 Employees</NavLink>
                 <button
                     className="navbar-toggler mx-3"
