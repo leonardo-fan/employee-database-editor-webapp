@@ -7,9 +7,9 @@ export default function Edit() {
         name: "",
         position: "",
         level: "",
-        records: [] // TODO what's the use of this?
+        // records: [] 
     });
-    const params = useParams(); // defined in routes, id of params from :id 
+    const params = useParams(); // defined in routes in App.js, params.id comes from :id 
     const navigate = useNavigate(); // used to nav between pages
 
     // called everytime [params.id, navigate] changed/called to find out what record the edit should refer to (through fetching from url)
@@ -49,9 +49,7 @@ export default function Edit() {
 
         await fetch(`http://localhost:5000/update/${params.id}`, {
             method: "POST",
-            headers: {
-            'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editedPerson)
         })
         .catch(error => {
