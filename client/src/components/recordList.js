@@ -9,9 +9,15 @@ const Record = props => (
         <td>{props.record.position}</td>
         <td>{props.record.level}</td>
         <td>
-            <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> | 
+            <Link 
+                className="btn btn-warning" 
+                to={`/edit/${props.record._id}`}
+            >
+                Edit
+            </Link>
+            <span> </span>
             <button 
-                className="btn btn-link"
+                className="btn btn-danger"
                 onClick={ () => { props.deleteRecord(props.record._id); } }
             >
                 Delete
@@ -25,6 +31,7 @@ export default function RecordList() {
 
     // fetch records from db
     useEffect(() => {
+        let mounted = true; // preventing state updates of unmounted components
         const getRecords = async () => {
             const response = await fetch(`http://localhost:5000/record/`);
 
@@ -32,21 +39,23 @@ export default function RecordList() {
                 window.alert(`An error occurred: ${response.statusText}`);
                 return;
             }
-
+            
             const responseRecords = await response.json();
-            setRecords(responseRecords);
+            if (mounted) {
+                setRecords(responseRecords);
+            }
         }
-
+        
         getRecords();
-        return;
-    }, [records.length]); // test if edited will refresh
+        return () => mounted = false;
+    }, [records]); 
 
     // delete record
     const deleteRecord = async id => {
         await fetch(`http://localhost:5000/${id}`, {
             method: "DELETE"
         });
-
+        
         const remainingRecords = records.filter(record => record._id !== id);
         setRecords(remainingRecords);
     };
@@ -65,13 +74,14 @@ export default function RecordList() {
     };
 
     return (
-        <div>
+        <div className="text-light">
+            <br></br>
             <h3>Record List</h3>
-            <table className="table table-striped" style={ { marginTop: 20 } }>
+            <table className="table align-middle table-responsive table-dark table-hover rounded" style={ { marginTop: 15 } }>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
+                        <th>Role</th>
                         <th>Level</th>
                         <th>Action</th>
                     </tr>
