@@ -13,6 +13,7 @@ Tutorial to create similar web app can be found here: https://www.mongodb.com/la
 *Server notes*
 * server.js is the main body that calls the other files/dependencies
 * routes (record.js) allow the db to be read/modified by the server
+   * the specified route is an application endpoint (uri) that responds to requests in a specified way. https://expressjs.com/en/guide/routing.html
 * conn.js establishes a connection to the mongodb database
 
 **Client Dependencies**
