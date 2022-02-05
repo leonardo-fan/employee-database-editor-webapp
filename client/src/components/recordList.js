@@ -33,7 +33,7 @@ export default function RecordList() {
     useEffect(() => {
         let mounted = true; // preventing state updates of unmounted components
         const getRecords = async () => {
-            const response = await fetch(`/record/`);
+            const response = await fetch(`http://EmployeeDatabaseGUI:80/record/`);
 
             if (!response.ok) {
                 window.alert(`An error occurred: ${response.statusText}`);
