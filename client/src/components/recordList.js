@@ -33,7 +33,7 @@ export default function RecordList() {
     useEffect(() => {
         let mounted = true; // preventing state updates of unmounted components
         const getRecords = async () => {
-            const response = await fetch(`/record`);
+            const response = await fetch(`/api/record`);
 
             if (!response.ok) {
                 window.alert(`An error occurred: ${response.statusText}`);
@@ -52,7 +52,7 @@ export default function RecordList() {
 
     // delete record
     const deleteRecord = async id => {
-        await fetch(`/${id}`, {
+        await fetch(`/api/${id}`, {
             method: "DELETE"
         });
         
