@@ -11,7 +11,7 @@ const dbo = require("./db/conn") // db driver connection, file in db folder
 
 // for azure connection: GET route points to static react build 
 app.use(express.static(path.join(__dirname, "client", "build"))); 
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
