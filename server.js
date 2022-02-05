@@ -3,7 +3,7 @@ const path = require("path"); // for azure connection
 const app = express();
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
-const port = process.env.PORT || 5000; // either specified port on config.env or port 5000 (both the same)
+const port = process.env.PORT || 5000; // either specified port on config.env or port 5000
 app.use(cors());
 app.use(express.json());
 app.use(require("./routes/record"));
