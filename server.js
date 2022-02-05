@@ -1,5 +1,5 @@
-const path = require("path"); // for azure connection
 const express = require("express");
+const path = require("path"); // for azure connection
 const app = express();
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
@@ -10,9 +10,9 @@ app.use(require("./routes/record"));
 const dbo = require("./db/conn") // db driver connection, file in db folder
 
 // for azure connection: GET route points to static react build 
-app.use(express.static("./client/build")); 
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+app.use(express.static(path.join(__dirname, "client", "build"))); 
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(port, () => {
