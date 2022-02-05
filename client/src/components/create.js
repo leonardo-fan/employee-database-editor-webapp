@@ -104,6 +104,8 @@ export default function Create() {
                         <label htmlFor="positionSenior" className="form-check-label">Senior</label>
                     </div>
                 </div>
+                <br />
+                
                 <div className="form-group">
                     <input
                         type="submit"
