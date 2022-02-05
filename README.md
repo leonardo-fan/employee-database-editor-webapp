@@ -36,4 +36,5 @@ Tutorial to create similar web app can be found here: https://www.mongodb.com/la
     * https://stackoverflow.com/questions/56983971/a-way-to-deploy-a-mern-app-to-azure-instead-of-heroku#:~:text=1%20Answer&text=In%20order%20to%20make%20a,static%20react%20build%20through%20express.&text=Note%3A%20Edit%20this%20to%20meet,in%20your%20Azure%20application%20settings. 
     * https://create-react-app.dev/docs/deployment/
 * Had to ensure build folder for react client in git repo
-* Port
+* Cannot hardcode PORT in web app as Azure assigns their own 
+* App services uses an external process.env file that needs to be configured in Azure
