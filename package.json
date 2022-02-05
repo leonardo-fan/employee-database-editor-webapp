@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "azure": "npm install --prefix client && npm run build --prefix client && npm run start"
+    "azure": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm run start"
   },
   "keywords": [],
   "author": "",
