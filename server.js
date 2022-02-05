@@ -1,3 +1,4 @@
+const path = require("path"); // for azure connection
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -7,18 +8,15 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/record"));
 const dbo = require("./db/conn") // db driver connection, file in db folder
-const path = require("path"); // for azure connection
+
+// for azure connection: GET route points to static react build 
+app.use(express.static("./client/build")); 
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
     // connect to db when server starts
     dbo.connectToServer(err => { if (err) console.error(err); });
     console.log(`Server is running on port: ${port}`);
 });
-
-// for azure connection: display static react build if in production
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build")); 
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-    });
-}
