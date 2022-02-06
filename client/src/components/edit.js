@@ -15,7 +15,7 @@ export default function Edit() {
     useEffect(() => {
         const fetchData = async () => {
             const id = params.id.toString();
-            const response = await fetch(`/api/record/${id}`);
+            const response = await fetch(`http://localhost:5000/record/${id}`);
 
             if (!response.ok) {
                 window.alert(`An error has occurred: ${response.statusText}`);
@@ -46,7 +46,7 @@ export default function Edit() {
         e.preventDefault();
         const editedPerson = { ...form };
 
-        await fetch(`/api/update/${params.id}`, {
+        await fetch(`http://localhost:5000/update/${params.id}`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editedPerson)
