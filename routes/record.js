@@ -64,17 +64,17 @@ recordRoutes.route("/update/:id").post((request, response) => {
         });
     });
     
-    // delete a record by id
-    recordRoutes.route("/:id").delete((request, response) => {
-        let db_connect = dbo.getDb("employees");
-        let myQuery = { _id: ObjectId( request.params.id ) };
-        db_connect
-        .collection("records")
-        .deleteOne(myQuery, (err, obj) => {
-            if (err) throw err;
-            console.log("1 document deleted");
-            response.status(obj);
-        });
+// delete a record by id
+recordRoutes.route("/:id").delete((request, response) => {
+    let db_connect = dbo.getDb("employees");
+    let myQuery = { _id: ObjectId( request.params.id ) };
+    db_connect
+    .collection("records")
+    .deleteOne(myQuery, (err, obj) => {
+        if (err) throw err;
+        console.log("1 document deleted");
+        response.status(obj);
+    });
 });
 
 module.exports = recordRoutes;
