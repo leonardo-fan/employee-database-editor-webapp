@@ -1,16 +1,13 @@
 const express = require("express");
 const path = require("path"); // for azure connection
-const cors = require("cors");
+const cors = require("cors"); // allows client to get data from server routes
+const dbo = require("./db/conn"); // db driver connection, file in db folder
+const routes = require("./routes/record"); // uris to interact with db
 const app = express();
-const dbo = require("./db/conn") // db driver connection, file in db folder
-app.use('/api', require("./routes/record"));
-
-app.use(favicon(path.join(__dirname, 'client', 'public', 'favicon.ico')));
-
 app.set('port', process.env.PORT || '5000'); // either specified port on config.env or port 5000, cannot hardcode port for azure
-
 app.use(cors());
 app.use(express.json());
+app.use(routes);
 
 // for azure connection: GET route points to static react build 
 app.use(express.static("./client/build")); 
