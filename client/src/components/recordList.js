@@ -31,30 +31,26 @@ export default function RecordList() {
 
     // fetch records from db
     useEffect(() => {
-        let mounted = true; // preventing state updates of unmounted components
         const getRecords = async () => {
-            const response = await fetch(`/api/record`);
-
+            const response = await fetch(`http://localhost:5000/record/`);
+            
             if (!response.ok) {
                 window.alert(`An error occurred: ${response.statusText}`);
                 return;
             }
-            
+
             const responseRecords = await response.json();
-            if (mounted) {
-                setRecords(responseRecords);
-            }
+            setRecords(responseRecords);
         }
         
         getRecords();
-        return () => mounted = false;
-    }, [records]); 
+    }, [records.length]); 
 
     // delete record
-    const deleteRecord = async id => {
-        await fetch(`/api/${id}`, {
-            method: "DELETE"
-        });
+    const deleteRecord = id => {
+        fetch(`http://localhost:5000/${id}`, { method: "DELETE" })
+            .then(res => { res.text()})
+            .then(res => console.log(res));
         
         const remainingRecords = records.filter(record => record._id !== id);
         setRecords(remainingRecords);
