@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function Create() {
+export default function Create(props) {
     const [form, setForm] = useState({
         name: "",
         position: "",
@@ -24,7 +24,7 @@ export default function Create() {
         // when post request sent to create url, add new record
         const newPerson = { ...form };
 
-        await fetch("http://localhost:5000/record/add", {
+        await fetch(`${props.baseURL}/record/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

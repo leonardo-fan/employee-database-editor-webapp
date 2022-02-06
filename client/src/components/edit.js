@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function Edit() {
+export default function Edit(props) {
     const [form, setForm] = useState({
         name: "",
         position: "",
@@ -15,7 +15,7 @@ export default function Edit() {
     useEffect(() => {
         const fetchData = async () => {
             const id = params.id.toString();
-            const response = await fetch(`http://localhost:5000/record/${id}`);
+            const response = await fetch(`${props.baseURL}/record/${id}`);
 
             if (!response.ok) {
                 window.alert(`An error has occurred: ${response.statusText}`);
@@ -34,7 +34,7 @@ export default function Edit() {
 
         fetchData();
         return;
-    }, [params.id, navigate]);
+    }, [params.id, navigate, props.baseURL]);
     
     const updateForm = value => {
         return setForm(prev => {
@@ -46,7 +46,7 @@ export default function Edit() {
         e.preventDefault();
         const editedPerson = { ...form };
 
-        await fetch(`http://localhost:5000/update/${params.id}`, {
+        await fetch(`${props.baseURL}/update/${params.id}`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editedPerson)
