@@ -7,7 +7,7 @@ const app = express();
 app.set('port', process.env.PORT || '5000'); // either specified port on config.env or port 5000, cannot hardcode port for azure
 app.use(cors());
 app.use(express.json());
-app.use(routes);
+app.use("/api", routes); // requests that come to /api is routed to routes (record.js) that then checks the remainder of the url
 
 // for azure connection: GET route points to static react build 
 app.use(express.static("./client/build")); 

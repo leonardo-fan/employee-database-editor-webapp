@@ -7,7 +7,7 @@ import Edit from "./components/edit";
 import Create from "./components/create";
 
 export default function App () {
-    const baseURL = "http://employeedatabasegui.azurewebsites.net/api";
+    const baseURL = "/api";
 
     // exact path means the url has to be an exact match to switch to the specified root - routes are default chosen with partial matches down the list
     return (

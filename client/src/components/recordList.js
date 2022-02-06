@@ -32,7 +32,7 @@ export default function RecordList(props) {
     // fetch records from db
     useEffect(() => {
         const getRecords = async () => {
-            const response = await fetch(`${props.baseURL}/record/`);
+            const response = await fetch(`${props.baseURL}/record`);
             
             if (!response.ok) {
                 window.alert(`An error occurred: ${response.statusText}`);
