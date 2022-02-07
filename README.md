@@ -20,7 +20,9 @@ This was a project done to learn fullstack web application development based on 
 * An Express.js/Node.js server to handle and route these requests to a MongoDB Atlas database through APIs.
 * A public website from which users can test out the web application without needing code. 
 
-View the final website [here](http://employeedatabasegui.azurewebsites.net/)!
+📢 View the final website [here](http://employeedatabasegui.azurewebsites.net/)!
+
+***
 
 ## <a name="get-started"></a> Get Started
 
@@ -72,11 +74,13 @@ const ObjectId = require("mongodb").ObjectId; // helps convert id from string to
 const collectionName = "records";
 ```
 
+***
+
 ## Running The App Locally
 
 When developing/testing locally, the app runs via two separate processes that need to be run parallel.
 
-### Start the Express Server
+### 1. Start the Express Server
 
 Ensure you have a local config.env file with the ATLAS_URI (refer to [Get Started](#get-started) Step 3). 
 Navigate to the root directory and run:
@@ -85,7 +89,7 @@ Navigate to the root directory and run:
 node server.js
 ```
 
-### Start the React App
+### 2. Start the React App
 
 1. Change the base url for the fetch API
 
@@ -104,13 +108,15 @@ cd ..
 npm start
 ```
 
+***
+
 ## Deploying the App to Azure App Service to run on a website
 
 Before deploying changes to production, the React app needs to be built. From there you can use the Azure App Service to deploy your app to the web.
 
 Please note that you should also allow public network access to the specified MongoDB database so that it can be access through the website.
 
-### Build React App
+### 1. Build React App
 
 Navigate to `/client` then run `npm run build`. This should be done every time a production ready change is done to the react app.
 
@@ -119,7 +125,7 @@ cd client
 npm run build
 ```
 
-### Deploy to Azure App Service
+### 2. Deploy to Azure App Service
 
 #### Using the Azure App Service Visual Studio Code Extension
 
