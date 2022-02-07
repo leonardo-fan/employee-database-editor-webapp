@@ -1,45 +1,132 @@
-# Employee Database GUI
+---
+Languages:
+- JavaScript
+- Node.js
+- HTML/CSS
+Frameworks:
+- React
+- Bootstrap
+- Express.js
+Technologies:
+- MongoDB
+- Azure App Service
+---
 
-This is a project done to learn backend and frontend technologies and frameworks through the MERN stack (MongoDB, Express.js, Node.js, React + Bootstrap). 
+# Employee Database Web App
 
-Tutorial to create similar web app can be found here: https://www.mongodb.com/languages/mern-stack-tutorial
+This was a project done to learn fullstack web application development based on the MERN 3-tier architecture (MongoDB, Express.js, Node.js, React + Bootstrap), utilising Azure App Services to deploy it online. It was inspired by this [guide](https://www.mongodb.com/languages/mern-stack-tutorial). The web app involves: 
 
-**Server Dependencies**
-* mongodb: drivers to allow NodeJS app to connect to db
-* express: web framework for NodeJS
-* cors: NodeJS package that allows for cross origin resource sharing (HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources)
-* dotenv: module that loads environment variables from .env file to process.env file --> separate config files from code
+* A React/Bootstrap frontend and client to enable user requests (Create, Read, Update and Delete).
+* An Express.js/Node.js server to handle and route these requests to a MongoDB Atlas database through APIs.
+* A public website from which users can test out the web application without needing code. 
 
-*Server notes*
-* server.js is the main body that calls the other files/dependencies
-* routes (record.js) allow the db to be read/modified by the server
-   * the specified route is an application endpoint (uri) that responds to requests in a specified way. https://expressjs.com/en/guide/routing.html
-   * when fetching from a specified url ending a specific function is done
-* conn.js establishes a connection to the mongodb database
+View the final website [here](http://employeedatabasegui.azurewebsites.net/)!
 
-**Client Dependencies**
-* bootstrap: preset templates/components for web apps
-* react-router-dom: React router components for web apps -> allows for changes in views without refreshing the whole page
+## Get Started {#get-started}
 
-*Client notes*
-* async functions
-* cannot change state of unmounted components
-* fetch (returns promise that must be resolved to a Response object of the HTTP response then to json via .json())
-    * additional request options through init object arg with method, headers, body
-* useParams and useNavigate from react router dom
-* routes to switch between components to view
-* learnt some bootstrap functionalities
+1. Clone this repository
 
-**Publishing App to Web**
-* Used Microsoft Azure App Services
-* Linked GitHub Repo for CI/CD
-* moved server files to root and followed this (changed package.json and server.js): 
-    * https://stackoverflow.com/questions/56983971/a-way-to-deploy-a-mern-app-to-azure-instead-of-heroku#:~:text=1%20Answer&text=In%20order%20to%20make%20a,static%20react%20build%20through%20express.&text=Note%3A%20Edit%20this%20to%20meet,in%20your%20Azure%20application%20settings. 
-    * https://create-react-app.dev/docs/deployment/
-* Had to ensure build folder for react client in git repo
-* Cannot hardcode PORT in web app as Azure assigns their own - used /api as a base url for server routing/fetching in client
-    * https://stackoverflow.com/questions/43763680/cannot-post-api-register-in-node-js 
+```bash
+git clone https://github.com/leonardo-fan/employee-database-webapp.git
+```
 
-**TODO**
-Run without build in git repo
-make normal README for launching
+2. Change into the directory where the repo was cloned and run `npm install` in both the root and client folder.
+
+```bash
+cd npm install
+cd client
+npm install
+```
+
+3. Configure the MongoDB connection settings
+
+Go back to the root folder and open `/db/conn.js`. Change the `uri` and `databaseName` variables to match your MongoDB connection string and database name respectively. 
+
+```javascript
+const { MongoClient } = require("mongodb");
+const uri = process.env.ATLAS_URI; // can replace with your own connection string or add an application setting to the Azure App Service
+const databaseName = "YourDatabaseName" // replace with the required database name
+```
+
+Note that process.env.ATLAS_URI can either refer to:
+- the Azure App Service Application Settings where you can add your own environment variables like the uri connection string for privacy. 
+- or a local config.env file (that is in .gitignore) where you have added your connection string, like below:
+
+```
+ATLAS_URI=<your-connection-string>
+```
+
+If you are using a local config.env file, you will also need to navigate to `/server.js` and uncomment this line:
+
+```javascript
+require("dotenv").config({ path: "./config.env" });
+```
+
+Open `/routes/record.js` and change the `collectionName` variable to match your database collection name.
+
+```javascript
+const express = require("express");
+const recordRoutes = express.Router(); // router used to define routes, middleware to control requests starting with path/record
+const dbo = require("../db/conn"); // connect to db
+const ObjectId = require("mongodb").ObjectId; // helps convert id from string to ObjectId for the _id mongodb queries
+const collectionName = "records";
+```
+
+## Running The App Locally
+
+When developing/testing locally, the app runs via two separate processes that need to be run parallel.
+
+### Start the Express Server
+
+Ensure you have a local config.env file with the ATLAS_URI (refer to [Get Started](#get-started) step 3). 
+Navigate to the root directory and run:
+
+```bash
+node server.js
+```
+
+### Start the React App
+
+1. Change the base url for the fetch API
+
+Navigate to `/client/src/App.js` and change the `baseURL` variable as shown below. Originally it is `/api` as this is what is used in the Azure App Service request urls.
+
+```javascript
+const baseURL = "http://localhost:5000";
+```
+
+2. Run the app
+
+In another terminal window (as the server is running from one), navigate back up to the client folder, then run `npm start`. 
+
+```bash
+cd ..
+npm start
+```
+
+## Deploying the App to Azure App Service to run on a website
+
+Before deploying changes to production, the React app needs to be built. From there you can the Azure App Service to deploy your app to the web.
+
+### Build React App
+
+Navigate to `/client` then run `npm run build`. This should be done every time a production ready change is done to the react app.
+
+```bash
+cd client
+npm run build
+```
+
+### Deploy to Azure App Service
+
+## Using the Azure App Service Visual Studio Code Extension
+
+Follow the guide [here](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=windows&pivots=development-environment-vscode). You can skip the "Create your Node.js application" section.
+
+## Using the Azure App Portal
+
+Follow the Microsoft Learning Module [here](https://docs.microsoft.com/en-au/learn/modules/host-a-web-app-with-azure-app-service/). You can skip the units where you create a test application if you would like.
+
+## Continuous deployment
+
+Azure App Service also supports continuous deployment where a GitHub/other repository can be linked to an app. Everytime the repo changes, App Service will also rebuild the website. A guide for more information on this can be found [here](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github). 
