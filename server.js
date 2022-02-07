@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path"); // for azure connection
 const cors = require("cors"); // allows client to get data from server routes
+// require("dotenv").config({ path: "./config.env" });
 const dbo = require("./db/conn"); // db driver connection, file in db folder
 const routes = require("./routes/record"); // uris to interact with db
 const app = express();
