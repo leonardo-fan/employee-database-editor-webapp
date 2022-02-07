@@ -33,6 +33,8 @@ Tutorial to create similar web app can be found here: https://www.mongodb.com/la
 
 **Publishing App to Web**
 * Used Microsoft Azure App Services
+* https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=windows&pivots=development-environment-vscode 
+    * needed to add new app setting for web config
 * Linked GitHub Repo for CI/CD
 * moved server files to root and followed this (changed package.json and server.js): 
     * https://stackoverflow.com/questions/56983971/a-way-to-deploy-a-mern-app-to-azure-instead-of-heroku#:~:text=1%20Answer&text=In%20order%20to%20make%20a,static%20react%20build%20through%20express.&text=Note%3A%20Edit%20this%20to%20meet,in%20your%20Azure%20application%20settings. 
