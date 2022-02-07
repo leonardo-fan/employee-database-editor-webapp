@@ -22,7 +22,7 @@ This was a project done to learn fullstack web application development based on 
 
 View the final website [here](http://employeedatabasegui.azurewebsites.net/)!
 
-## Get Started {#get-started}
+## <a name="get-started"></a> Get Started
 
 1. Clone this repository
 
@@ -78,7 +78,7 @@ When developing/testing locally, the app runs via two separate processes that ne
 
 ### Start the Express Server
 
-Ensure you have a local config.env file with the ATLAS_URI (refer to [Get Started](#get-started) step 3). 
+Ensure you have a local config.env file with the ATLAS_URI (refer to [Get Started](#get-started) Step 3). 
 Navigate to the root directory and run:
 
 ```bash
@@ -106,7 +106,9 @@ npm start
 
 ## Deploying the App to Azure App Service to run on a website
 
-Before deploying changes to production, the React app needs to be built. From there you can the Azure App Service to deploy your app to the web.
+Before deploying changes to production, the React app needs to be built. From there you can use the Azure App Service to deploy your app to the web.
+
+Please note that you should also allow public network access to the specified MongoDB database so that it can be access through the website.
 
 ### Build React App
 
@@ -119,14 +121,14 @@ npm run build
 
 ### Deploy to Azure App Service
 
-## Using the Azure App Service Visual Studio Code Extension
+#### Using the Azure App Service Visual Studio Code Extension
 
 Follow the guide [here](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=windows&pivots=development-environment-vscode). You can skip the "Create your Node.js application" section.
 
-## Using the Azure App Portal
+#### Using the Azure App Portal
 
 Follow the Microsoft Learning Module [here](https://docs.microsoft.com/en-au/learn/modules/host-a-web-app-with-azure-app-service/). You can skip the units where you create a test application if you would like.
 
-## Continuous deployment
+#### Continuous deployment
 
 Azure App Service also supports continuous deployment where a GitHub/other repository can be linked to an app. Everytime the repo changes, App Service will also rebuild the website. A guide for more information on this can be found [here](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github). 
