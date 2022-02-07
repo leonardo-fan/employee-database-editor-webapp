@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - EmployeeDatabaseGUI
+name: Build and deploy Node.js app to Azure Web App - EmployeeDatabaseEditor
 
 on:
   push:
@@ -50,7 +50,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'EmployeeDatabaseGUI'
+          app-name: 'EmployeeDatabaseEditor'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ADCFD5A44A2E4E239452181AAB224436 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33C95EE40B0340979232BFACF4A5415C }}
           package: .
