@@ -114,7 +114,7 @@ npm start
 
 Before deploying changes to production, the React app needs to be built. From there you can use the Azure App Service to deploy your app to the web.
 
-Please note that you should also allow network access for the App Service IP addresses to the specified MongoDB database so that it can be accessed through the website.
+**Note** that you should also allow network access for the App Service Outbound IP addresses (found in the Properties tab of the Azure Portal) to the specified MongoDB database so that it can be accessed through the website.
 
 ### 1. Build React App
 
