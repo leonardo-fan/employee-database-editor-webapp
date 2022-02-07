@@ -1,5 +1,6 @@
 const { MongoClient } = require("mongodb");
-const uri = "mongodb+srv://leonardofan:6m9kp5kkaURPFu7z@cluster0.q7wqd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = process.env.ATLAS_URI;
+const databaseName = "myFirstDatabase";
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -13,7 +14,7 @@ module.exports = {
         client.connect((err, db) => {
             // verify db object
             if (db) {
-                _db = db.db("myFirstDatabase");
+                _db = db.db(databaseName);
                 console.log("Successfully connected to MongoDB");
             }
             return callback(err);
