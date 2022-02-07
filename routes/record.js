@@ -2,12 +2,13 @@ const express = require("express");
 const recordRoutes = express.Router(); // router used to define routes, middleware to control requests starting with path/record
 const dbo = require("../db/conn"); // connect to db
 const ObjectId = require("mongodb").ObjectId; // helps convert id from string to ObjectId for the _id mongodb queries
+const collectionName = "records";
 
 // read list of all records
 recordRoutes.route("/record").get((request, response) => {
     let db_connect = dbo.getDb("employees"); 
     db_connect
-        .collection("records")
+        .collection(collectionName)
         .find({})
         .toArray((err, result) => {
             if (err) throw err;
@@ -20,7 +21,7 @@ recordRoutes.route("/record/:id").get((request, response) => {
     let db_connect = dbo.getDb("employees"); 
     let myQuery = { _id: ObjectId( request.params.id ) };
     db_connect
-        .collection("records")
+        .collection(collectionName)
         .findOne(myQuery, (err, result) => {
             if (err) throw err;
             response.json(result);
@@ -36,7 +37,7 @@ recordRoutes.route("/record/add").post((request, response) => {
         level: request.body.level
     };
     db_connect
-        .collection("records")
+        .collection(collectionName)
         .insertOne(myObj, (err, result) => {
             if (err) throw err;
             console.log("1 document added");
@@ -56,7 +57,7 @@ recordRoutes.route("/update/:id").post((request, response) => {
         }
     };
     db_connect
-        .collection("records")
+        .collection(collectionName)
         .updateOne(myQuery, newValues, (err, result) => {
             if (err) throw err;
             console.log("1 document updated");
@@ -69,7 +70,7 @@ recordRoutes.route("/:id").delete((request, response) => {
     let db_connect = dbo.getDb("employees");
     let myQuery = { _id: ObjectId( request.params.id ) };
     db_connect
-    .collection("records")
+    .collection(collectionName)
     .deleteOne(myQuery, (err, obj) => {
         if (err) throw err;
         console.log("1 document deleted");
