@@ -20,7 +20,7 @@ This was a project done to learn fullstack web application development based on 
 * An Express.js/Node.js server to handle and route these requests to a MongoDB Atlas database through APIs.
 * A public website from which users can test out the web application without needing code. 
 
-📢 View the final website [here](http://employeedatabasegui.azurewebsites.net/)!
+📢 View the final website [here](https://employeedatabaseeditor.azurewebsites.net)!
 
 ***
 
@@ -114,7 +114,7 @@ npm start
 
 Before deploying changes to production, the React app needs to be built. From there you can use the Azure App Service to deploy your app to the web.
 
-Please note that you should also allow public network access to the specified MongoDB database so that it can be access through the website.
+Please note that you should also allow network access for the App Service IP addresses to the specified MongoDB database so that it can be accessed through the website.
 
 ### 1. Build React App
 
@@ -130,10 +130,6 @@ npm run build
 #### Using the Azure App Service Visual Studio Code Extension
 
 Follow the guide [here](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=windows&pivots=development-environment-vscode). You can skip the "Create your Node.js application" section.
-
-#### Using the Azure App Portal
-
-Follow the Microsoft Learning Module [here](https://docs.microsoft.com/en-au/learn/modules/host-a-web-app-with-azure-app-service/). You can skip the units where you create a test application if you would like.
 
 #### Continuous deployment
 
