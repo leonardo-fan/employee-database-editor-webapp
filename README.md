@@ -1,6 +1,6 @@
 # Employee Database GUI
 
-This is a project done to learn backend and frontend technologies and frameworks through the MERN stack (MongoDB, ExpressJS, NodeJS, ReactJS + Bootstrap). 
+This is a project done to learn backend and frontend technologies and frameworks through the MERN stack (MongoDB, Express.js, Node.js, React + Bootstrap). 
 
 Tutorial to create similar web app can be found here: https://www.mongodb.com/languages/mern-stack-tutorial
 
@@ -38,3 +38,8 @@ Tutorial to create similar web app can be found here: https://www.mongodb.com/la
     * https://create-react-app.dev/docs/deployment/
 * Had to ensure build folder for react client in git repo
 * Cannot hardcode PORT in web app as Azure assigns their own - used /api as a base url for server routing/fetching in client
+    * https://stackoverflow.com/questions/43763680/cannot-post-api-register-in-node-js 
+
+**TODO**
+Run without build in git repo
+make normal README for launching
