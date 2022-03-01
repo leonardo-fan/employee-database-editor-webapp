@@ -36,6 +36,7 @@ export default function RecordList(props) {
             
             if (!response.ok) {
                 window.alert(`An error occurred: ${response.statusText}`);
+                location.reload();
                 return;
             }
 
